@@ -7,6 +7,7 @@ var_230= qword ptr -230h
 var_170= qword ptr -170h
 var_160= qword ptr -160h
 var_130= dword ptr -130h
+var_E2= dword ptr -0E2h
 var_98= qword ptr -98h
 var_90= xmmword ptr -90h
 var_40= qword ptr -40h
@@ -163,7 +164,51 @@ PUBLIC DllEntryPoint
     adc     r11, rcx
     shr     rbp, 2Bh
     adc     rdx, r11
-    jmp     rdx
+    mov     esi, 0CB05A3B2h
+    mov     ebp, esi
+    movsx   ecx, si
+    mov     rcx, [r10]
+    ;movzx   ebp, byte ptr [r9]
+    mov     ebp, 90h
+    movsx   ebx, si
+    lea     rdx, 0FFFFFFFF9401711Fh[rsi*2]
+    xor     bpl, dil
+    rol     rdx, 35h
+    movsx   eax, sil
+    setnb   al
+    sbb     bpl, al
+    sal     si, 0Eh
+    movzx   r8d, dl
+    ror     bpl, 1
+    xor     ax, bx
+    or      si, 6E94h
+    not     bpl
+    inc     bl
+    btc     r8w, r8w
+    sbb     r8, 0FFFFFFFF8F37FEA4h
+    neg     bpl
+    xor     dil, bpl
+    rol     sil, 43h
+    cbw
+    neg     eax
+    add     rbp, rsp
+    sar     r8, 1Dh
+    mov     [rbp+rax*2-9Ch], rcx
+    mov     ecx, ebx
+    push    r8
+    cwd
+    mov     rcx, [r10+rax*4-130h]
+    setz    dl
+    ;movzx   esi, byte ptr [rax+r9-4Dh]
+    mov     esi, 90h
+    mov     ebp, [rsp+rax+98h+var_E2]
+    xor     sil, dil
+    ror     sil, 1
+    xor     ax, r8w
+    jbe     loc_1815CA04D
+    nop
+    loc_1815CA04D:
+    nop
     int 3
     xor eax, eax
     ret
